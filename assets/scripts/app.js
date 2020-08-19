@@ -6,37 +6,37 @@ function getUserNumberInput() {
   return parseInt(userInput.value);
 }
 
-// function createANumber(operator, initialNumber, currentNumber) {
-//   const calResult = `${operator} ${initialNumber} ${currentNumber}`;
-//   outputResult(currentResult, calDescription);
-// }
+function createANumber(operator, initialNumber, currentNumber) {
+  const calResult = `${initialNumber} ${operator} ${currentNumber}`;
+  outputResult(currentResult, calResult);
+}
 
 function add() {
+  const initialResult = currentResult;
   const enteredNumber = getUserNumberInput();
-  const calDescription = `${currentResult} + ${enteredNumber}`;
   currentResult = currentResult + enteredNumber;
-  outputResult(currentResult, calDescription);
+  createANumber('+', initialResult, enteredNumber);
 }
 
 function subtract() {
   const enteredNumber = getUserNumberInput();
-  const calDescription = `${currentResult} - ${enteredNumber}`;
+  const initialResult = currentResult;
   currentResult = currentResult - enteredNumber;
-  outputResult(currentResult, calDescription);
+  createANumber('-', initialResult, enteredNumber);
 }
 
 function multiply() {
   const enteredNumber = getUserNumberInput();
-  const calDescription = `${currentResult} * ${enteredNumber}`;
+  const initialResult = currentResult;
   currentResult = currentResult * enteredNumber;
-  outputResult(currentResult, calDescription);
+  createANumber('*', initialResult, enteredNumber);
 }
 
 function divide() {
   const enteredNumber = getUserNumberInput();
-  const calDescription = `${currentResult} / ${enteredNumber}`;
+  const initialResult = currentResult;
   currentResult = currentResult / enteredNumber;
-  outputResult(currentResult, calDescription);
+  createANumber('/', initialResult, enteredNumber);
 }
 
 
