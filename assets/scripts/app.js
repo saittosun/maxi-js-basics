@@ -19,9 +19,16 @@ function add() {
   const enteredNumber = getUserNumberInput();
   currentResult += enteredNumber; 
   // alert(++currentResult); //  I get the result after the change
-  // alert(currentResult++); //  I get the result before the change
+  // alert(currentResult++); //  I get the result before the change 
   createANumber('+', initialResult, enteredNumber);
-  const newLogEntries = logEntries.push(enteredNumber);
+  const logEntry = {
+    operation: 'ADD',
+    prevResult: initialResult,
+    number: enteredNumber,
+    result: currentResult
+  }
+  // const newLogEntries = logEntries.push(enteredNumber);
+  const newLogEntries = logEntries.push(logEntry);
   console.log(newLogEntries);
   console.log(logEntries);
 }
