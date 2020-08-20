@@ -1,6 +1,7 @@
 // jshint esversion: 9
 const defaultResult = 0;
 let currentResult = defaultResult;
+let logEntries = [];
 
 // gets input from input field
 function getUserNumberInput() {
@@ -20,6 +21,9 @@ function add() {
   // alert(++currentResult); //  I get the result after the change
   // alert(currentResult++); //  I get the result before the change
   createANumber('+', initialResult, enteredNumber);
+  const newLogEntries = logEntries.push(enteredNumber);
+  console.log(newLogEntries);
+  console.log(logEntries);
 }
 
 function subtract() {
