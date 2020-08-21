@@ -8,8 +8,13 @@
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"
       rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/styles/app.css" />
+      />
+      <link rel="stylesheet" href="assets/styles/app.css" />
+      <!-- defer tells the browser that it should download these scripts right away but that it should not block parsing HTML so that it instead should continue with parsing HTML and only execute the scripts after everything has been parsed. So it starts downloading early but it doesn't execute the scripts right away once they've finished downloading, instead it guarantees us that it only executes the scripts once they were downloaded and once parsing HTML finished.  so that is faster than what we saw previously when we started loading and then executing the scripts at the bottom of the body tag.-->
+      <!--  sometimes, you also have scripts which you want to load early but which you then also want to execute early because maybe they don't rely on the HTML code, you don't establish a connection to it and therefore you don't care whether parsing HTML finished or not. This can also be achieved by using the async keyword instead of the defer keyword. Async works a bit like defer, it tells the browser to start loading the scripts as early as possible and then the browser is not blocked but instead continues parsing HTML but the difference to defer is that with async, the script then executes right away once it was downloaded. So it does not wait for all the HTML code to be parsed, instead it executes as early as possible. So then parsing of HTML will be paused until it is executed and only thereafter it will pick up again. -->
+      <!-- One other important difference to be aware of is that with async, a script really executes as early as possible, so as soon as it was downloaded. The order of the script execution is therefore not guaranteed, the app.js script could execute before the vendor.js script if it is loaded earlier. With defer on the other side, the browser guarantees the order. -->
+      <script src="assets/scripts/vendor.js" defer></script>
+      <script src="assets/scripts/app.js" defer></script>
   </head>
   <body>
     <header>
@@ -29,7 +34,5 @@
       <h2 id="current-calculation">0</h2>
       <h2>Result: <span id="current-result">0</span></h2>
     </section>
-    <script src="assets/scripts/vendor.js"></script>
-    <script src="assets/scripts/app.js"></script>
   </body>
 </html>
